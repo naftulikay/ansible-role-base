@@ -1,0 +1,16 @@
+---
+galaxy_info:
+  name: base
+  version: v1.0.0
+  author: Naftuli Kay
+  description: Base role for all systems.
+  license: MIT
+  min_ansible_version: 2.2
+
+  platforms:
+    - name: EL
+      versions: [7]
+    - name: Ubuntu
+      versions: [trusty, xenial]
+
+  galaxy_tags: [base]
