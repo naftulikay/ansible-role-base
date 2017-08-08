@@ -6,6 +6,6 @@ language: python
 cache: { pip: true }
 
 install: pip install --upgrade -r requirements.txt
-script: python -m unittest module_tests
+script: python -m unittest module_utils
 
 notifications: { email: { on_success: never, on_failure: never } }
