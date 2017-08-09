@@ -6,7 +6,16 @@ Available on Ansible Galaxy at [`naftulikay.base`][galaxy].
 
 ## Requirements
 
-Officially tested operating systems are listed in the Galaxy manifest.
+One of the supported operating systems:
+
+ - Ubuntu 14.04
+   - elementary Freya
+ - Ubuntu 16.04
+   - elementary Loki
+ - EL 7
+   - CentOS 7
+   - RHEL 7
+ - Fedora
 
 ## Role Variables
 

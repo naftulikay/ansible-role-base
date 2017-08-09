@@ -99,11 +99,21 @@ class BaseFactsTestCase(unittest.TestCase):
 
     def test_get_distribution(self):
         """Tests that distributions are found properly."""
-        self.assertEqual('centos', get_distribution('centos').name)
-        self.assertEqual('elementary', get_distribution('elementary').name)
+        centos = get_distribution('centos')
+        redhat = get_distribution('redhat')
+        ubuntu = get_distribution('ubuntu')
+        elementary = get_distribution('elementary')
+        fedora = get_distribution('fedora')
+
+        self.assertEqual('centos', centos.name)
+        self.assertEqual('redhat', redhat.name)
+        self.assertEqual('redhat', centos.parent.name)
+
         self.assertEqual('fedora', get_distribution('fedora').name)
-        self.assertEqual('redhat', get_distribution('redhat').name)
-        self.assertEqual('ubuntu', get_distribution('ubuntu').name)
+
+        self.assertEqual('ubuntu', ubuntu.name)
+        self.assertEqual('ubuntu', elementary.parent.name)
+        self.assertEqual('elementary', elementary.name)
 
         self.assertEqual('unknown', get_distribution('fhqwgads').name)
 
@@ -117,7 +127,7 @@ class BaseFactsTestCase(unittest.TestCase):
 
         self.assertEqual('unknown', get_root_distribution('fhqwgads').name)
 
-    def test_get_distribution_release(self):
+    def test_get_distribution_release_trusty(self):
         """Tests that distribution releases are found properly."""
         # trusty
         trusty = get_distribution_release('trusty')
@@ -126,13 +136,30 @@ class BaseFactsTestCase(unittest.TestCase):
         self.assertIsNone(trusty.parent)
         self.assertEqual(UBUNTU, trusty.distribution)
 
+    def test_get_distribution_release_freya(self):
+        """Tests that distribution releases are found properly."""
         # freya
         freya = get_distribution_release('freya')
         self.assertEqual('freya', freya.name)
         self.assertEqual('0.3', freya.version)
         self.assertEqual(ELEMENTARY, freya.distribution)
 
-        self.assertEqual('xenial', get_distribution_release('xenial').name)
-        self.assertEqual('16.04', get_distribution_release('xenial').version)
-        self.assertEqual('loki', get_distribution_release('loki').name)
-        self.assertEqual('0.4', get_distribution_release('loki').version)
+    def test_get_distribution_release_xenial(self):
+        """Tests that distribution releases are found properly."""
+        # xenial
+        xenial = get_distribution_release('xenial')
+        self.assertEqual('xenial', xenial.name)
+        self.assertEqual('16.04', xenial.version)
+        self.assertEqual(UBUNTU, xenial.distribution)
+
+    def test_get_distribution_release_loki(self):
+        """Tests that distribution releases are found properly."""
+        # loki
+        loki = get_distribution_release('loki')
+        self.assertEqual('loki', loki.name)
+        self.assertEqual('0.4', loki.version)
+        self.assertEqual(ELEMENTARY, loki.distribution)
+
+    def test_get_root_distribution_release_trusty(self):
+        """Tests that root distributions are found properly."""
+        trusty = get_distribution_release('trusty')
