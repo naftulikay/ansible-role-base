@@ -1,1 +1,6 @@
 ---
+- fail: msg="Not Marked as elementary OS"
+  when: not is_elementary
+
+- fail: msg="Not Marked as elementary Loki"
+  when: not is_elementary_loki

@@ -1,0 +1,3 @@
+---
+- fail: msg="Not Marked as RedHat Derivative"
+  when: not is_redhat_derivative
