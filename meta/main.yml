@@ -1,7 +1,6 @@
 ---
 galaxy_info:
   name: base
-  version: v1.0.0
   author: Naftuli Kay
   description: Base role for all systems.
   license: MIT

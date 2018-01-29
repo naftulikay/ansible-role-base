@@ -1,11 +1,31 @@
 ---
 dist: trusty
-sudo: false
+sudo: required
+
+matrix:
+  fast_finish: true
 
 language: python
 cache: { pip: true }
+python:
+  - "3.5"
 
-install: pip install --upgrade -r requirements.txt
-script: python -m unittest module_utils
+services:
+  - docker
 
-notifications: { email: { on_success: never, on_failure: never } }
+env:
+  global: # applied to every run
+    ROLE_NAME: vagrant-ruby-dev
+
+  matrix: # each entry is its own run
+    - IMAGE_NAME: naftulikay/centos-vm:7
+    - IMAGE_NAME: naftulikay/xenial-vm:latest
+    - IMAGE_NAME: naftulikay/trusty-vm:latest
+    - IMAGE_NAME: naftulikay/loki-vm:latest
+
+install: pip install -r requirements.txt
+script: travis-pls make test-clean
+
+notifications:
+  email: { on_success: never, on_failure: never }
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
