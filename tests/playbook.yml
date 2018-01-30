@@ -2,4 +2,56 @@
 - name: test
   hosts: all
   roles: [base]
-  tasks: []
+  tasks:
+    - name: dump output
+      debug: msg={{ item }}
+      with_items:
+        - is_ubuntu={{ is_ubuntu }}
+        - is_ubuntu_derivative={{ is_ubuntu_derivative }}
+
+        - is_ubuntu_trusty={{ is_ubuntu_trusty }}
+        - is_ubuntu_trusty_derivative={{ is_ubuntu_trusty_derivative }}
+
+        - is_ubuntu_xenial={{ is_ubuntu_xenial }}
+        - is_ubuntu_xenial_derivative={{ is_ubuntu_xenial_derivative }}
+
+        - is_elementary={{ is_elementary }}
+        - is_elementary_loki={{ is_elementary_loki }}
+
+        - is_redhat={{ is_redhat }}
+        - is_redhat_derivative={{ is_redhat_derivative }}
+        - is_centos={{ is_centos }}
+
+    # derivative tests
+    - name: include ubuntu derivative tasks
+      include_tasks: tests/derivatives/ubuntu.yml
+      when: ansible_distribution | lower in ['ubuntu', 'elementary os']
+
+    - name: include trusty derivative tasks
+      include_tasks: tests/derivatives/trusty.yml
+      when: ansible_distribution_release | lower in ['trusty']
+
+    - name: include xenial derivative tasks
+      include_tasks: tests/derivatives/xenial.yml
+      when: ansible_distribution_release | lower in ['xenial', 'loki']
+
+    - name: include redhat derivative tasks
+      include_tasks: tests/derivatives/redhat.yml
+      when: ansible_os_family == 'RedHat'
+
+    # distro tests
+    - name: include centos tasks
+      include_tasks: tests/centos.yml
+      when: ansible_distribution | lower == 'centos'
+
+    - name: include trusty tasks
+      include_tasks: tests/trusty.yml
+      when: ansible_distribution_release | lower == 'trusty'
+
+    - name: include xenial tasks
+      include_tasks: tests/xenial.yml
+      when: ansible_distribution_release | lower == 'xenial'
+
+    - name: include loki tasks
+      include_tasks: tests/loki.yml
+      when: ansible_distribution_release | lower == 'loki'

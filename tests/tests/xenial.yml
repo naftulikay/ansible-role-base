@@ -1,0 +1,3 @@
+---
+- fail: msg="Not Marked as Xenial"
+  when: not is_ubuntu_xenial

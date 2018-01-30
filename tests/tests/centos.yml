@@ -1,0 +1,3 @@
+---
+- fail: msg="Not Marked as CentOS"
+  when: not is_centos

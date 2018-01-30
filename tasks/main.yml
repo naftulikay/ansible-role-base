@@ -1,0 +1,18 @@
+---
+- name: establish facts
+  set_fact:
+    is_ubuntu: "{{ (ansible_distribution | lower) == 'ubuntu' }}"
+    is_ubuntu_derivative: "{{ (ansible_distribution | lower in naftulikay.base.ubuntu_children) }}"
+
+    is_ubuntu_trusty: "{{ (ansible_distribution_release | lower) == 'trusty' }}"
+    is_ubuntu_trusty_derivative: "{{ (ansible_distribution_release | lower in naftulikay.base.trusty_children) }}"
+
+    is_ubuntu_xenial: "{{ (ansible_distribution_release | lower) == 'xenial' }}"
+    is_ubuntu_xenial_derivative: "{{ (ansible_distribution_release | lower in naftulikay.base.xenial_children) }}"
+
+    is_elementary: "{{ (ansible_distribution | lower == 'elementary os') }}"
+    is_elementary_loki: "{{ (ansible_distribution_release | lower) == 'loki' }}"
+
+    is_redhat: "{{ (ansible_distribution | lower) == 'redhat' }}"
+    is_redhat_derivative: "{{ (ansible_os_family | lower == 'redhat') }}"
+    is_centos: "{{ (ansible_distribution | lower == 'centos') }}"

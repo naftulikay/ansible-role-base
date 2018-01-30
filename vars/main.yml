@@ -1,0 +1,14 @@
+---
+naftulikay:
+  base:
+    xenial_children:
+      - loki
+      - xenial
+
+    trusty_children:
+      - freya
+      - trusty
+
+    ubuntu_children:
+      - elementary os
+      - ubuntu
