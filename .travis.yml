@@ -15,7 +15,7 @@ services:
 
 env:
   global: # applied to every run
-    ROLE_NAME: vagrant-ruby-dev
+    ROLE_NAME: base
 
   matrix: # each entry is its own run
     - IMAGE_NAME: naftulikay/centos-vm:7
