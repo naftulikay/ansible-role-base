@@ -1,6 +1,7 @@
 ---
 - name: establish facts
   set_fact:
+    # boolean tests
     is_ubuntu: "{{ (ansible_distribution | lower) == 'ubuntu' }}"
     is_ubuntu_derivative: "{{ (ansible_distribution | lower in naftulikay.base.ubuntu_children) }}"
 
@@ -16,3 +17,11 @@
     is_redhat: "{{ (ansible_distribution | lower) == 'redhat' }}"
     is_redhat_derivative: "{{ (ansible_os_family | lower == 'redhat') }}"
     is_centos: "{{ (ansible_distribution | lower == 'centos') }}"
+
+    ubuntu_release: |-
+      {%- for ubuntu_release in naftulikay.base.ubuntu_releases -%}
+        {%- if ansible_distribution_release | lower in  naftulikay.base[ubuntu_release + "_children"] -%}
+          {{ ubuntu_release }}
+        {%- endif -%}
+      {%- endfor -%}
+
