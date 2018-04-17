@@ -1,6 +1,14 @@
 ---
 naftulikay:
   base:
+    ubuntu_releases:
+      - beaver
+      - trusty
+      - xenial
+
+    beaver_children:
+      - beaver
+
     xenial_children:
       - loki
       - xenial

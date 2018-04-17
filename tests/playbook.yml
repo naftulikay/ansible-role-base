@@ -1,7 +1,7 @@
 ---
 - name: test
   hosts: all
-  roles: [base]
+  roles: [default]
   tasks:
     - name: dump output
       debug: msg={{ item }}
@@ -21,6 +21,8 @@
         - is_redhat={{ is_redhat }}
         - is_redhat_derivative={{ is_redhat_derivative }}
         - is_centos={{ is_centos }}
+
+        - ubuntu_release={{ ubuntu_release }}
 
     # derivative tests
     - name: include ubuntu derivative tasks
