@@ -2,6 +2,14 @@
 - name: establish facts
   set_fact:
     # boolean tests
+    is_linux: "{{ (ansible_system | lower) == 'linux' }}"
+
+    is_mac: "{{ (ansible_system | lower) == 'darwin' }}"
+    # a bunch of aliases for alias sake
+    is_osx: "{{ (ansible_system | lower) == 'darwin' }}"
+    is_macos: "{{ (ansible_system | lower) == 'darwin' }}"
+    is_darwin: "{{ (ansible_system | lower) == 'darwin' }}"
+
     is_ubuntu: "{{ (ansible_distribution | lower) == 'ubuntu' }}"
     is_ubuntu_derivative: "{{ (ansible_distribution | lower in naftulikay.base.ubuntu_children) }}"
 
@@ -24,4 +32,3 @@
           {{ ubuntu_release }}
         {%- endif -%}
       {%- endfor -%}
-

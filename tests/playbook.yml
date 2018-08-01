@@ -6,6 +6,12 @@
     - name: dump output
       debug: msg={{ item }}
       with_items:
+        - is_linux={{ is_linux }}
+        - is_mac={{ is_mac }}
+        -   is_osx={{ is_osx }}
+        -   is_macos={{ is_macos }}
+        -   is_darwin={{ is_darwin }}
+
         - is_ubuntu={{ is_ubuntu }}
         - is_ubuntu_derivative={{ is_ubuntu_derivative }}
 
@@ -23,6 +29,15 @@
         - is_centos={{ is_centos }}
 
         - ubuntu_release={{ ubuntu_release }}
+
+    # os tests
+    - name: include linux tasks
+      include_tasks: tests/os/linux.yml
+      when: ansible_system | lower in ['linux']
+
+    - name: include osx tasks
+      include_tasks: tests/os/mac.yml
+      when: ansible_system | lower in ['darwin']
 
     # derivative tests
     - name: include ubuntu derivative tasks
