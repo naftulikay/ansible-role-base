@@ -16,6 +16,7 @@ One of the supported operating systems:
    - CentOS 7
    - RHEL 7
  - Fedora
+ - macOS/OSX
 
 ## Role Variables
 
