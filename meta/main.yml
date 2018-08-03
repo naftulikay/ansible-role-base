@@ -11,5 +11,6 @@ galaxy_info:
       versions: [7]
     - name: Ubuntu
       versions: [trusty, xenial]
+    - name: MacOSX
 
   galaxy_tags: [base]
