@@ -1,3 +1,0 @@
----
-- fail: msg="Not Marked as Xenial Derivative"
-  when: not is_ubuntu_xenial_derivative | bool

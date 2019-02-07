@@ -1,0 +1,12 @@
+---
+gossfile:
+  "ubuntu/{{ .Vars.ansible_distribution_release }}.yml": {}
+
+command:
+  "echo is_ubuntu={{ .Vars.is_ubuntu }}":
+    exit-status: 0
+    stdout: [is_ubuntu=true]
+
+  "echo is_ubuntu_derivative={{ .Vars.is_ubuntu_derivative }}":
+    exit-status: 0
+    stdout: [is_ubuntu_derivative=true]

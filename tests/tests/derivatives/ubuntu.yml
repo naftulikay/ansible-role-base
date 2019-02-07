@@ -1,3 +1,0 @@
----
-- fail: msg="Not Marked as Ubuntu Derivative"
-  when: not is_ubuntu_derivative | bool

@@ -1,0 +1,10 @@
+---
+command:
+  "echo {{ .Vars.ansible_is_darwin }}":
+    stdout: [true]
+  "echo {{ .Vars.ansible_is_mac }}":
+    stdout: [true]
+  "echo {{ .Vars.ansible_is_macos }}":
+    stdout: [true]
+  "echo {{ .Vars.ansible_is_osx }}":
+    stdout: [true]

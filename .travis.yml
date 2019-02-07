@@ -1,34 +1,12 @@
 ---
-language: generic
+dist: trusty
+sudo: false
 
-matrix:
-  fast_finish: true
-  include:
-    - os: linux
-      env: IMAGE=centos7
-      dist: trusty
-      services:
-        - docker
-    - os: linux
-      env: IMAGE=loki
-      dist: trusty
-      services:
-        - docker
-    - os: linux
-      env: IMAGE=trusty
-      dist: trusty
-      services:
-        - docker
-    - os: linux
-      env: IMAGE=xenial
-      dist: trusty
-      services:
-       - docker
-    - os: osx
-      sudo: required
+language: python
+python: 3.6
+cache: pip
 
-install: make install
-script: make clean test
+script: make test
 
 notifications:
   email:

@@ -1,74 +1,50 @@
 ---
 - name: test
   hosts: all
-  roles: [default]
-  tasks:
-    - name: dump output
-      debug: msg={{ item }}
-      with_items:
-        - is_linux={{ is_linux }}
-        - is_mac={{ is_mac }}
-        -   is_osx={{ is_osx }}
-        -   is_macos={{ is_macos }}
-        -   is_darwin={{ is_darwin }}
+  roles:
+    - role: default
+    - role: naftulikay.degoss
+      degoss_clean_on_failure: false
+      goss_file: goss.yml
+      goss_addtl_dirs: [goss.d]
+      goss_variables:
+        # Helpers
+        ansible_lsb_codename: "{{ ansible_lsb.codename | default('unknown') }}"
 
-        - is_ubuntu={{ is_ubuntu }}
-        - is_ubuntu_derivative={{ is_ubuntu_derivative }}
+        # OPERATING SYSTEMS
+        # Linux
+        is_linux: "{{ is_linux }}"
 
-        - is_ubuntu_trusty={{ is_ubuntu_trusty }}
-        - is_ubuntu_trusty_derivative={{ is_ubuntu_trusty_derivative }}
+        # macOS
+        is_darwin: "{{ is_darwin }}"
+        is_mac: "{{ is_mac }}"
+        is_macos: "{{ is_macos }}"
+        is_osx: "{{ is_osx }}"
 
-        - is_ubuntu_xenial={{ is_ubuntu_xenial }}
-        - is_ubuntu_xenial_derivative={{ is_ubuntu_xenial_derivative }}
+        # DISTRIBUTIONS
+        # Ubuntu
+        is_ubuntu: "{{ is_ubuntu }}"
+        is_ubuntu_derivative: "{{ is_ubuntu_derivative }}"
 
-        - is_elementary={{ is_elementary }}
-        - is_elementary_loki={{ is_elementary_loki }}
+        is_ubuntu_bionic: "{{ is_ubuntu_bionic }}"
+        is_ubuntu_bionic_derivative: "{{ is_ubuntu_bionic_derivative }}"
 
-        - is_redhat={{ is_redhat }}
-        - is_redhat_derivative={{ is_redhat_derivative }}
-        - is_centos={{ is_centos }}
+        is_ubuntu_trusty: "{{ is_ubuntu_trusty }}"
+        is_ubuntu_trusty_derivative: "{{ is_ubuntu_trusty_derivative }}"
 
-        - ubuntu_release={{ ubuntu_release }}
+        is_ubuntu_xenial: "{{ is_ubuntu_xenial }}"
+        is_ubuntu_xenial_derivative: "{{ is_ubuntu_xenial_derivative }}"
 
-    # os tests
-    - name: include linux tasks
-      include_tasks: tests/os/linux.yml
-      when: ansible_system | lower in ['linux']
+        ubuntu_release: "{{ ubuntu_release }}"
 
-    - name: include osx tasks
-      include_tasks: tests/os/mac.yml
-      when: ansible_system | lower in ['darwin']
+        # elementary OS
+        is_elementary_os: "{{ is_elementary_os }}"
+        is_elementary_os_loki: "{{ is_elementary_os_loki }}"
+        is_elementary_os_juno: "{{ is_elementary_os_juno }}"
 
-    # derivative tests
-    - name: include ubuntu derivative tasks
-      include_tasks: tests/derivatives/ubuntu.yml
-      when: ansible_distribution | lower in ['ubuntu', 'elementary os']
+        elementary_os_release: "{{ elementary_os_release }}"
 
-    - name: include trusty derivative tasks
-      include_tasks: tests/derivatives/trusty.yml
-      when: ansible_distribution_release | lower in ['trusty']
-
-    - name: include xenial derivative tasks
-      include_tasks: tests/derivatives/xenial.yml
-      when: ansible_distribution_release | lower in ['xenial', 'loki']
-
-    - name: include redhat derivative tasks
-      include_tasks: tests/derivatives/redhat.yml
-      when: ansible_os_family == 'RedHat'
-
-    # distro tests
-    - name: include centos tasks
-      include_tasks: tests/centos.yml
-      when: ansible_distribution | lower == 'centos'
-
-    - name: include trusty tasks
-      include_tasks: tests/trusty.yml
-      when: ansible_distribution_release | lower == 'trusty'
-
-    - name: include xenial tasks
-      include_tasks: tests/xenial.yml
-      when: ansible_distribution_release | lower == 'xenial'
-
-    - name: include loki tasks
-      include_tasks: tests/loki.yml
-      when: ansible_distribution_release | lower == 'loki'
+        # Enterprise Linux
+        is_redhat: "{{ is_redhat }}"
+        is_redhat_derivative: "{{ is_redhat_derivative }}"
+        is_centos: "{{ is_centos }}"

@@ -1,3 +1,0 @@
----
-- fail: msg="Not marked as Linux"
-  when: not is_linux

@@ -1,6 +1,0 @@
----
-- fail: msg="Not Marked as Trusty"
-  when: not is_ubuntu_trusty
-
-- fail: msg="Ubuntu release should be Trusty."
-  when: ubuntu_release != "trusty"

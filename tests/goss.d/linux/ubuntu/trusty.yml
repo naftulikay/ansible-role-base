@@ -1,0 +1,13 @@
+---
+command:
+  "echo is_ubuntu_trusty={{ .Vars.is_ubuntu_trusty }}":
+    exit-status: 0
+    stdout: [is_ubuntu_trusty=true]
+
+  "echo is_ubuntu_trusty_derivative={{ .Vars.is_ubuntu_trusty_derivative }}":
+    exit-status: 0
+    stdout: [is_ubuntu_trusty_derivative=true]
+
+  "echo ubuntu_release={{ .Vars.ubuntu_release }}":
+    exit-status: 0
+    stdout: [ubuntu_release=trusty]
