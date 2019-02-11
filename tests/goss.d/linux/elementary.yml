@@ -1,0 +1,11 @@
+---
+gossfile:
+  "elementary/{{ .Vars.ansible_lsb.codename }}.yml": {}
+
+command:
+  "echo is_elementary_os={{ .Vars.is_elementary_os }}":
+    exit-status: 0
+    stdout: [is_elementary_os=true]
+  "echo is_ubuntu_derivative={{ .Vars.is_ubuntu_derivative }}":
+    exit-status: 0
+    stdout: [is_ubuntu_derivative=true]

@@ -1,0 +1,19 @@
+---
+naftulikay:
+  base:
+    elementary_os:
+      releases:
+        loki: loki
+        juno: juno
+
+    ubuntu:
+      children:
+        - elementary OS
+        - Ubuntu
+
+      releases:
+        bionic: bionic
+        juno:   bionic
+        loki:   xenial
+        trusty: trusty
+        xenial: xenial

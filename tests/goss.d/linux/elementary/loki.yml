@@ -1,0 +1,17 @@
+---
+command:
+  "echo is_elementary_os_loki={{ .Vars.is_elementary_os_loki }}":
+    exit-status: 0
+    stdout: [is_elementary_os_loki=true]
+
+  "echo is_ubuntu_xenial_derivative={{ .Vars.is_ubuntu_xenial_derivative }}":
+    exit-status: 0
+    stdout: [is_ubuntu_xenial_derivative=true]
+
+  "echo elementary_os_release={{ .Vars.elementary_os_release }}":
+    exit-status: 0
+    stdout: [elementary_os_release=loki]
+
+  "echo ubuntu_release={{ .Vars.ubuntu_release }}":
+    exit-status: 0
+    stdout: [ubuntu_release=xenial]

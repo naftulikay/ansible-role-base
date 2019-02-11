@@ -2,15 +2,18 @@
 galaxy_info:
   name: base
   author: Naftuli Kay
+  src: naftulikay.base
   description: Base role for all systems.
   license: MIT
-  min_ansible_version: 2.2
+  min_ansible_version: 2.7
 
   platforms:
     - name: EL
       versions: [7]
     - name: Ubuntu
-      versions: [trusty, xenial]
+      versions: [bionic, trusty, xenial]
     - name: MacOSX
 
   galaxy_tags: [base]
+
+dependencies: []

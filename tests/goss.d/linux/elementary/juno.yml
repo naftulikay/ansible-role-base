@@ -1,0 +1,18 @@
+---
+command:
+  "echo is_elementary_os_juno={{ .Vars.is_elementary_os_juno }}":
+    exit-status: 0
+    stdout: [is_elementary_os_juno=true]
+
+  "echo is_ubuntu_bionic_derivative={{ .Vars.is_ubuntu_bionic_derivative }}":
+    exit-status: 0
+    stdout: [is_ubuntu_bionic_derivative=true]
+
+
+  "echo elementary_os_release={{ .Vars.elementary_os_release }}":
+    exit-status: 0
+    stdout: [elementary_os_release=juno]
+
+  "echo ubuntu_release={{ .Vars.ubuntu_release }}":
+    exit-status: 0
+    stdout: [ubuntu_release=bionic]

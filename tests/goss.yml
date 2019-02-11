@@ -1,0 +1,8 @@
+---
+gossfile:
+{{ if eq .Vars.ansible_system "Linux" }}
+  "goss.d/linux.yml": {}
+{{ end }}
+{{ if eq .Vars.ansible_system "Darwin" }}
+  "goss.d/macos.yml": {}
+{{ end }}

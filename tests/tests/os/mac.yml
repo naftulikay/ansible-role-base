@@ -1,3 +1,0 @@
----
-- fail: msg="Not marked as OSX"
-  when: not is_mac

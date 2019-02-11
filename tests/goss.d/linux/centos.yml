@@ -1,0 +1,14 @@
+---
+command:
+  "echo is_centos={{ .Vars.is_centos }}":
+    exit-status: 0
+    stdout: [is_centos=true]
+
+  "echo is_redhat={{ .Vars.is_redhat }}":
+    exit-status: 0
+    # this should only yield true on actual untestable RHEL
+    stdout: [is_redhat=false]
+
+  "echo is_redhat_derivative={{ .Vars.is_redhat_derivative }}":
+    exit-status: 0
+    stdout: [is_redhat_derivative=true]

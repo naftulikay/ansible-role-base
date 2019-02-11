@@ -1,34 +1,39 @@
 ---
+- name: establish alias facts
+  set_fact:
+    ansible_lsb_codename: "{{ ansible_lsb.get('codename', 'unknown') }}"
+
 - name: establish facts
   set_fact:
     # boolean tests
-    is_linux: "{{ (ansible_system | lower) == 'linux' }}"
+    is_linux:  "{{ ansible_system == 'Linux' }}"
 
-    is_mac: "{{ (ansible_system | lower) == 'darwin' }}"
+    is_mac:    "{{ ansible_system == 'Darwin' }}"
     # a bunch of aliases for alias sake
-    is_osx: "{{ (ansible_system | lower) == 'darwin' }}"
-    is_macos: "{{ (ansible_system | lower) == 'darwin' }}"
-    is_darwin: "{{ (ansible_system | lower) == 'darwin' }}"
+    is_osx:    "{{ ansible_system == 'Darwin' }}"
+    is_macos:  "{{ ansible_system == 'Darwin' }}"
+    is_darwin: "{{ ansible_system == 'Darwin' }}"
 
-    is_ubuntu: "{{ (ansible_distribution | lower) == 'ubuntu' }}"
-    is_ubuntu_derivative: "{{ (ansible_distribution | lower in naftulikay.base.ubuntu_children) }}"
+    is_ubuntu:            "{{ ansible_distribution == 'Ubuntu' }}"
+    is_ubuntu_derivative: "{{ ansible_distribution in naftulikay.base.ubuntu.children }}"
 
-    is_ubuntu_trusty: "{{ (ansible_distribution_release | lower) == 'trusty' }}"
-    is_ubuntu_trusty_derivative: "{{ (ansible_distribution_release | lower in naftulikay.base.trusty_children) }}"
+    is_ubuntu_bionic:            "{{ ansible_distribution_release == 'bionic' }}"
+    is_ubuntu_bionic_derivative: "{{ naftulikay.base.ubuntu.releases.get(ansible_lsb_codename, 'unknown') == 'bionic' }}"
 
-    is_ubuntu_xenial: "{{ (ansible_distribution_release | lower) == 'xenial' }}"
-    is_ubuntu_xenial_derivative: "{{ (ansible_distribution_release | lower in naftulikay.base.xenial_children) }}"
+    is_ubuntu_trusty:            "{{ ansible_distribution_release == 'trusty' }}"
+    is_ubuntu_trusty_derivative: "{{ naftulikay.base.ubuntu.releases.get(ansible_lsb_codename, 'unknown') == 'trusty' }}"
 
-    is_elementary: "{{ (ansible_distribution | lower == 'elementary os') }}"
-    is_elementary_loki: "{{ (ansible_distribution_release | lower) == 'loki' }}"
+    is_ubuntu_xenial:            "{{ ansible_distribution_release == 'xenial' }}"
+    is_ubuntu_xenial_derivative: "{{ naftulikay.base.ubuntu.releases.get(ansible_lsb_codename, 'unknown') == 'xenial' }}"
 
-    is_redhat: "{{ (ansible_distribution | lower) == 'redhat' }}"
-    is_redhat_derivative: "{{ (ansible_os_family | lower == 'redhat') }}"
-    is_centos: "{{ (ansible_distribution | lower == 'centos') }}"
+    is_elementary_os:      "{{ ansible_distribution == 'elementary OS' }}"
+    is_elementary_os_loki: "{{ (ansible_distribution == 'elementary OS') and (ansible_lsb_codename == 'loki') }}"
+    is_elementary_os_juno: "{{ (ansible_distribution == 'elementary OS') and (ansible_lsb_codename == 'juno') }}"
 
-    ubuntu_release: |-
-      {%- for ubuntu_release in naftulikay.base.ubuntu_releases -%}
-        {%- if ansible_distribution_release | lower in  naftulikay.base[ubuntu_release + "_children"] -%}
-          {{ ubuntu_release }}
-        {%- endif -%}
-      {%- endfor -%}
+    elementary_os_release: "{{ naftulikay.base.elementary_os.releases.get(ansible_lsb_codename, 'unknown') }}"
+
+    is_redhat: "{{ ansible_distribution == 'RedHat' }}"
+    is_redhat_derivative: "{{ ansible_os_family == 'RedHat' }}"
+    is_centos: "{{ ansible_distribution == 'CentOS' }}"
+
+    ubuntu_release: "{{ naftulikay.base.ubuntu.releases.get(ansible_lsb_codename, 'unknown') }}"

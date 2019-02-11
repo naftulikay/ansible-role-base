@@ -1,6 +1,0 @@
----
-- fail: msg="Not Marked as Xenial"
-  when: not is_ubuntu_xenial
-
-- fail: msg="Ubuntu release should be Xenial"
-  when: ubuntu_release != "xenial"

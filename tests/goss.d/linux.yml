@@ -1,0 +1,16 @@
+---
+gossfile:
+{{ if eq .Vars.ansible_distribution "CentOS" }}
+  "linux/centos.yml": {}
+{{ end }}
+{{ if eq .Vars.ansible_distribution "elementary OS" }}
+  "linux/elementary.yml": {}
+{{ end }}
+{{ if eq .Vars.ansible_distribution "Ubuntu" }}
+  "linux/ubuntu.yml": {}
+{{ end }}
+
+command:
+  "echo is_linux={{ .Vars.is_linux }}":
+    exit-status: 0
+    stdout: [is_linux=true]

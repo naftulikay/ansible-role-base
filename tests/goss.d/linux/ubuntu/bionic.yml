@@ -1,0 +1,13 @@
+---
+command:
+  "echo is_ubuntu_bionic={{ .Vars.is_ubuntu_bionic }}":
+    exit-status: 0
+    stdout: [is_ubuntu_bionic=true]
+
+  "echo is_ubuntu_bionic_derivative={{ .Vars.is_ubuntu_bionic_derivative }}":
+    exit-status: 0
+    stdout: [is_ubuntu_bionic_derivative=true]
+
+  "echo ubuntu_release={{ .Vars.ubuntu_release }}":
+    exit-status: 0
+    stdout: [ubuntu_release=bionic]

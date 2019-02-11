@@ -1,39 +1,17 @@
-# ansible-role-base [![Build Status][img-build-status]][build-status]
+# ansible-role-base [![Build Status][build.svg]][build]
 
-A base role for all Ansible systems.
+A base role for all Ansible systems, providing various facts around operating systems and Linux distributions.
+Supported systems are documented in [SUPPORT.md](./SUPPORT.md).
 
 Available on Ansible Galaxy at [`naftulikay.base`][galaxy].
 
-## Requirements
-
-One of the supported operating systems:
-
- - Ubuntu 14.04
-   - elementary Freya
- - Ubuntu 16.04
-   - elementary Loki
- - EL 7
-   - CentOS 7
-   - RHEL 7
- - Fedora
- - macOS/OSX
-
-## Role Variables
-
-None.
-
-## Dependencies
-
-None.
-
-## Example Playbook
-
-N/A.
-
 ## License
 
-MIT
+Licensed at your discretion under either:
 
- [build-status]: https://travis-ci.org/naftulikay/ansible-role-base
- [img-build-status]: https://travis-ci.org/naftulikay/ansible-role-base.svg?branch=master
+ - [Apache Software License, Version 2.0](./LICENSE-APACHE)
+ - [MIT License](./LICENSE-MIT)
+
+ [build]: https://travis-ci.org/naftulikay/ansible-role-base
+ [build.svg]: https://travis-ci.org/naftulikay/ansible-role-base.svg?branch=master
  [galaxy]: https://galaxy.ansible.com/naftulikay/base/

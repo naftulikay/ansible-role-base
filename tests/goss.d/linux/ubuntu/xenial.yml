@@ -1,0 +1,13 @@
+---
+command:
+  "echo is_ubuntu_xenial={{ .Vars.is_ubuntu_xenial }}":
+    exit-status: 0
+    stdout: [is_ubuntu_xenial=true]
+
+  "echo is_ubuntu_xenial_derivative={{ .Vars.is_ubuntu_xenial_derivative }}":
+    exit-status: 0
+    stdout: [is_ubuntu_xenial_derivative=true]
+
+  "echo ubuntu_release={{ .Vars.ubuntu_release }}":
+    exit-status: 0
+    stdout: [ubuntu_release=xenial]
