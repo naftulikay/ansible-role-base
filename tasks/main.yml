@@ -29,6 +29,7 @@
     is_elementary_os:      "{{ ansible_distribution == 'elementary OS' }}"
     is_elementary_os_loki: "{{ (ansible_distribution == 'elementary OS') and (ansible_lsb_codename == 'loki') }}"
     is_elementary_os_juno: "{{ (ansible_distribution == 'elementary OS') and (ansible_lsb_codename == 'juno') }}"
+    is_elementary_os_hera: "{{ (ansible_distribution == 'elementary OS') and (ansible_lsb_codename == 'hera') }}"
 
     elementary_os_release: "{{ naftulikay.base.elementary_os.releases.get(ansible_lsb_codename, 'unknown') }}"
 
