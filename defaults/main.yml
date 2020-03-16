@@ -5,6 +5,7 @@ naftulikay:
       releases:
         loki: loki
         juno: juno
+        hera: hera
 
     ubuntu:
       children:
@@ -14,6 +15,7 @@ naftulikay:
       releases:
         bionic: bionic
         juno:   bionic
+        hera:   bionic
         loki:   xenial
         trusty: trusty
         xenial: xenial
